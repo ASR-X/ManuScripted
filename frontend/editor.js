@@ -19,7 +19,8 @@ var quill = new Quill('#editor-container', {
     	 service: {
 
       //You should signup for getting this key
-      apiKey: "FD111F92-42A2-4935-A433-4D34716575A0",
+      //other api key
+      apiKey: "E8FEF7AE-3F36-4EAF-A451-456D05E6F2A3",
 
       //[optional] You can specify it for permanent access to your settings and dictionaries
       //userId: "<YOUR_USER_ID>",
