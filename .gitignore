@@ -1,3 +1,4 @@
 .DS_Store
 quill-drag-and-drop-modulenp
 /frontend/react-packhacks/node_modules/
+/frontend/quill-image-upload
