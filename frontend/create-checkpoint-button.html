@@ -36,7 +36,7 @@
         btn.addEventListener("click", function (e) {
             e.preventDefault()
             btn.disabled = true
-            btn.innerHTML = "Please Wait..."
+            btn.setAttribute("value", "Please Wait...");
             var name = document.getElementById("Name").value;
             var exists = false
             getData('https://v1.nocodeapi.com/asrx/webflow/arvZVdciEcIdtZsO')
@@ -45,31 +45,33 @@
                     if(data["items"][i]["name"] == name) {
                         error_msg_div.style.display = "block"
                         error_msg.innerHTML = "Checkpoint already exists"
-                        submit.disabled = false
+                        btn.disabled = false
+                        btn.setAttribute("value", "Create");
                         console.log("Checkpoint already exists")
                         exists = true
                     }
                 }
+                console.log(exists);
+                if (exists == false) {
+                    const body = {
+                        "name" : name,
+                        "start-date": obtainDate(),
+                        "due-date": "2021-03-25T00:00:00.000Z",
+                        "essay" : String(quill.getContents()),
+                        "score": "null",
+                        "readibilityindex": "null",
+                        "essay-length": "null",
+                        "avgsentencelength": "null",
+                        "avgwordlength" : "null",
+                        "nounphrases": "null"
+                    };
+                    postData('https://v1.nocodeapi.com/asrx/webflow/arvZVdciEcIdtZsO', body)
+                    .then(data => {
+                        console.log(data);
+                        window.location.href = "http://stanfordrejects.com/";
+                    })
+                }
             })
-            if (!exists) {
-                const body = {
-                    "name" : name,
-                    "start-date": obtainDate(),
-                    "due-date": "2021-03-25T00:00:00.000Z",
-                    "essay" : String(quill.getContents()),
-                    "score": "null",
-                    "readibilityindex": "null",
-                    "essay-length": "null",
-                    "avgsentencelength": "null",
-                    "avgwordlength" : "null",
-                    "nounphrases": "null"
-                };
-                postData('https://v1.nocodeapi.com/asrx/webflow/arvZVdciEcIdtZsO', body)
-                .then(data => {
-                    console.log(data);
-                    window.location.href = "http://stanfordrejects.com/";
-                })
-            }
         })
     }
 </script>
