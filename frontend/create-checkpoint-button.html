@@ -36,6 +36,7 @@
         btn.addEventListener("click", function (e) {
             e.preventDefault()
             btn.disabled = true
+            btn.innerHTML = "Please Wait..."
             var name = document.getElementById("Name").value;
             var exists = false
             getData('https://v1.nocodeapi.com/asrx/webflow/arvZVdciEcIdtZsO')
