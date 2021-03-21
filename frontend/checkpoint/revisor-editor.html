@@ -6,7 +6,7 @@
     .quill-text-field {
         display: block;
         height: 60vh;
-        width: 80%;
+        width: 100%;
         background-color: #ffffff;
         border-bottom-left-radius: 8px;
         border-bottom-right-radius: 8px;
@@ -16,7 +16,7 @@
   .quill-toolbar {
     display: block;
     background-color: #ffffff;
-    width: 80%;
+    width: 100%;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
   }
@@ -94,28 +94,41 @@ customButton.addEventListener('click', function() {
         quilltext = quill.getText(range.index, range.length);
       }
     }
-    fetch(url, {
+    fetch(
+      'https://96343b47d504.ngrok.io/inspire', {
           method: 'POST', // *GET, POST, PUT, DELETE, etc.
           body: JSON.stringify({ essay: quilltext }) // body data type must match "Content-Type" header
         })
     .then((resp) => resp.json())
     .then(function(response) {
-        
+        inspiration1.innerHTML = response["in1"].substring(0,200) + "..."
+        inspiration1.style.fontSize = "15px"
+        inspiration2.innerHTML = response["in2"].substring(0,200) + "..."
+        inspiration2.style.fontSize = "15px"
+        inspiration3.innerHTML = response["in3"].substring(0,200) + "..."
+        inspiration3.style.fontSize = "15px"
     });
 });
 
 var playdiv = document.querySelector('#play-div')
 var pausediv = document.querySelector('#pause-div')
 
-playdiv.addEventListener('click', function() {
+// playdiv.addEventListener('click', function() {
   
-});
+// });
 
-pausediv.addEventListener('click', function() {
+// pausediv.addEventListener('click', function() {
     
-});
+// });
 
 
 await_fill_quill_data()
+
+quilltextts = quill.getText()
+fetch('https://96343b47d504.ngrok.io/tts', {
+  method: 'POST',
+  body: JSON.stringify({essay: quilltextts})
+})
+.then((resp) => console.log(resp))
 
 </script>

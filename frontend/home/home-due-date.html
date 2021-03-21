@@ -9,7 +9,14 @@ async function await_home_due_date_data() {
 while (window.data == null){
     await sleep(200);
 }
-var momentdate = moment(data["items"][0]["due-date"], 'YYYY-MM-DDT00:00:00.000Z')
+var raw = data["items"][0]["due-date"].substring(0, 10)
+var lastday = raw[raw.length - 1]
+var intlastday = parseInt(lastday);
+intlastday++;
+var stringlastday = String(intlastday)
+raw[raw.length-1] = stringlastday
+console.log(raw)
+var momentdate = moment(raw, 'YYYY-MM-DD')
     document.getElementById("home-due-date").innerHTML = momentdate.format('MMM Do, YYYY')
     document.getElementById("loadingDiv-due-date-home").style.display = "none";
     document.getElementById("home-due-date").style.display = "block"

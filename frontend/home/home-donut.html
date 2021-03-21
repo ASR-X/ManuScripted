@@ -18,6 +18,7 @@ async function await_home_donut_data() {
     }
     console.log(tscore)
     tscore /= window.data["count"]
+    tscore = parseFloat(tscore).toFixed(1)
     
     
     var data = {
