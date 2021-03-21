@@ -13,7 +13,7 @@ We know that lingustics AI has become very advanced over the last few years, but
 ## Try it out!
 The prototype for ManuScripted is publicly available at https://manuscripted.webflow.io - give a test!  
 Our DevPost project is available at https://devpost.com/software/manuscripted   
-This GitHub repository is a mix of the Webflow custom components in `frontend/` and exported Colab Python Notebooks in `/backend/` 
+This GitHub repository is a mix of the Webflow custom components in `./frontend/` and exported Colab Python Notebooks in `./backend/` 
 
 ## What's next for ManuScripted
  - Fleshed out data visualizations
