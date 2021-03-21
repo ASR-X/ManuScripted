@@ -1,5 +1,5 @@
-<img align="Right" src="https://i.imgur.com/njFjrAk.png" height="200" width="200">
 # ManuScripted
+<img align="Right" src="https://i.imgur.com/njFjrAk.png" height="200" width="200">
 
 Built for high-schoolers, by high-schoolers. We know exactly how stressful being in high-school is, so we built ManuScripted. This web app helps you keep track of all the stages of writing an essay, from the rough draft to the final paper. Write your essays with confidence with visualizations and insights into your writing in an instant, and a little help from AI to help you reach that next level.
 ## Advanced Analytics and Statistics
