@@ -1,3 +1,4 @@
 .DS_Store
 frontend/src-webflow
 frontend/react-packhacks/node_modules
+node_modules
