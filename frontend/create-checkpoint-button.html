@@ -53,22 +53,26 @@
                 }
                 console.log(exists);
                 if (exists == false) {
-                    const body = {
-                        "name" : name,
-                        "start-date": obtainDate(),
-                        "due-date": "2021-03-25T00:00:00.000Z",
-                        "essay" : String(quill.getContents()),
-                        "score": "null",
-                        "readibilityindex": "null",
-                        "essay-length": "null",
-                        "avgsentencelength": "null",
-                        "avgwordlength" : "null",
-                        "nounphrases": "null"
-                    };
-                    postData('https://v1.nocodeapi.com/asrx/webflow/arvZVdciEcIdtZsO', body)
+                    postData('http://1f684ff200a2.ngrok.io/rateessay', quill.getContents())
                     .then(data => {
-                        console.log(data);
-                        window.location.href = "https://wowie-2c95af.webflow.io/checkpoints/" + name;
+                        console.log(data)
+                        // const itembody = {
+                        // "name" : name,
+                        // "start-date": obtainDate(),
+                        // "due-date": "2021-03-25T00:00:00.000Z",
+                        // "essay" : String(quill.getContents()),
+                        // "score": "null",
+                        // "readibilityindex": "null",
+                        // "essay-length": "null",
+                        // "avgsentencelength": "null",
+                        // "avgwordlength" : "null",
+                        // "nounphrases": "null"
+                        // };
+                        // postData('https://v1.nocodeapi.com/asrx/webflow/arvZVdciEcIdtZsO', itembody)
+                        // .then(data => {
+                        //     console.log(data);
+                        //     window.location.href = "https://wowie-2c95af.webflow.io/checkpoints/" + name;
+                        // })
                     })
                 }
             })
