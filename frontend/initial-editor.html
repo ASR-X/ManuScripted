@@ -21,9 +21,11 @@
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/mammoth@1.4.8/mammoth.browser.min.js"></script>
-  <p>
-    (Optional) Import a .docx file: <input id="document" type="file" />
-  </p>
+  <!-- <p>
+    (Optional) Import a .docx file: 
+  </p> -->
+  
+
 
 <div id="toolbar" class="quill-toolbar">
   <!-- Add font size dropdown -->
@@ -42,11 +44,14 @@
   <!-- Add subscript and superscript buttons -->
   <button class="ql-script" value="sub"></button>
   <button class="ql-script" value="super"></button>
+  
   <select class="ql-header">
     <option value='1'></option>
     <option value='2'></option>
     <option value='3'></option>
   </select>
+  <!-- <input id="file-input" type="document"  style="display: none;" /> -->
+  <input id="document" type="file" />
 </div>
 
 <div class="quill-text-field" id="editor-container">
