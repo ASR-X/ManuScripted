@@ -20,7 +20,11 @@
   }
 </style>
 
-
+<script src="https://cdn.jsdelivr.net/npm/mammoth@1.4.8/mammoth.browser.min.js"></script>
+  <p>
+    (Optional) Import a .docx file: <input id="document" type="file" />
+  </p>
+  
 <div id="toolbar" class="quill-toolbar">
   <!-- Add font size dropdown -->
   <select class="ql-size">
@@ -52,15 +56,12 @@
 <div spellcheck="false" class="quill-text-field" id="editor-container">
 </div>
    
-<script src="https://cdn.jsdelivr.net/npm/mammoth@1.4.8/mammoth.browser.min.js"></script>
-  <p>
-    Select a .docx file: <input id="document" type="file" />
-  </p>
+
   
-  <h4>Output</h4>
+  <!-- <h4>Output</h4>
   
   <div id="output">
-  </div>
+  </div> -->
 
 <script type="text/javascript">
   window.BeyondGrammar.initBeyondGrammar();
@@ -95,7 +96,7 @@ document.getElementById("document")
         });
     }
     function displayResult(result) {
-        document.getElementById("output").innerHTML = result.value;
+        //document.getElementById("output").innerHTML = result.value;
         quill.clipboard.dangerouslyPasteHTML(result.value);
     }
     
