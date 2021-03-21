@@ -25,13 +25,17 @@
         btn.addEventListener("click", function (e) {
             e.preventDefault()
             btn.disabled = true
+            error_msg_div.style.display = "none"
             btn.setAttribute("value", "Please Wait...");
-            var name = document.getElementById("Name").value;
             var exists = false
-            getData('https://v1.nocodeapi.com/asrx/webflow/arvZVdciEcIdtZsO')
-            .then(data => {
+            fetch("https://v1.nocodeapi.com/asrx/webflow/arvZVdciEcIdtZsO?live=true", {
+                  method: 'GET', // *GET, POST, PUT, DELETE, etc.
+            })
+            .then((resp) => resp.json())
+            .then(function(data) {
+                console.log(data)
                 for (let i =0; i < data["count"]; i++) {
-                    if(data["items"][i]["name"] == name) {
+                    if(data["items"][i]["name"] == String(document.getElementById("Name").value)) {
                         error_msg_div.style.display = "block"
                         error_msg.innerHTML = "Checkpoint already exists"
                         btn.disabled = false
@@ -42,35 +46,43 @@
                 }
                 console.log(exists);
                 if (exists == false) {
-                    var url = "";
+                    var url = "https://6bcf94506dd0.ngrok.io/score";
+                    var quilltext = String(quill.getText())
+                    var quilldelta = quill.getContents()
                     fetch(url, {
                           method: 'POST', // *GET, POST, PUT, DELETE, etc.
-                          body: JSON.stringify(data) // body data type must match "Content-Type" header
+                          body: JSON.stringify({ essay: quilltext }) // body data type must match "Content-Type" header
                         })
                     .then((resp) => resp.json())
                     .then(function(response) {
                         console.info('fetch()', response);
+                        var name = document.getElementById("Name").value;
                         const itembody = {
-                        "name" : name,
+                        "name" : String(name),
                         "start-date": obtainDate(),
                         "due-date": "2021-03-25T00:00:00.000Z",
-                        "essay" : String(quill.getContents()),
+                        "essay" : JSON.stringify(quilldelta),
                         "score": response["score"],
-                        "readibilityindex": response["readibilityindex"],
-                        "essaylength": response["essaylength"],
+                        "readabilityindex": response["readabilityindex"],
+                        "essay-length": response["essaylength"],
                         "avgsentencelength": response["avgsentencelength"],
                         "avgwordlength" : response["avgwordlength"],
                         "nounphrases": response["nounphrases"],
                         "difficultwords": response["difficultwords"]
                         };
-                        fetch('https://v1.nocodeapi.com/asrx/webflow/arvZVdciEcIdtZsO', {
+                        fetch('https://v1.nocodeapi.com/asrx/webflow/arvZVdciEcIdtZsO?live=true', {
                           method: 'POST', // *GET, POST, PUT, DELETE, etc.
-                          body: JSON.stringify(data) // body data type must match "Content-Type" header
+                          headers: {
+                              'Accept': 'application/json',
+                              'Content-Type': 'application/json',
+                              'Access-Control-Allow-Origin':'*' 
+                            },
+                          body: JSON.stringify(itembody) // body data type must match "Content-Type" header
                         })
                         .then((data) => data.json())
                         .then(function(datajson) {
                           console.log(datajson)
-                          window.location.href = "https://wowie-2c95af.webflow.io/checkpoints/" + name;
+                          window.location.href = "https://manuscripted.webflow.io/checkpoints/" + datajson["slug"];
                         });
                     });
         }

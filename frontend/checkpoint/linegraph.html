@@ -1,0 +1,64 @@
+<div id="loadingDiv" class="lds-ring">
+    <div></div>
+</div>
+
+<canvas id="lineChart" style="display:none;" ></canvas>
+
+<script>
+
+var ctx = document.getElementById('lineChart').getContext('2d');
+var clabels =[]
+var cdata=[]
+
+async function await_line_graph_data() {
+    while (window.data == null){
+        await sleep(200);
+    }
+
+    var name = String(document.getElementById("name-text").innerHTML);
+
+    for (let i = window.data["count"]-1; i > -1;i--) {
+        clabels.push(window.data["items"][i]["name"])
+        cdata.push(window.data["items"][i]["score"])
+        if ( window.data["items"][i]["name"] == name ){
+            break;
+        }
+    }
+
+    console.info("clabels", clabels)
+    console.info("cdata", cdata)
+
+    var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: clabels,
+        datasets: [{
+            label: 'Score Over Past Checkpoints',
+            backgroundColor: 'rgb(24, 117, 240, 0.5)',
+            borderColor: 'rgb(24, 117, 240, 0.5)',
+            data: cdata
+        }]
+    },
+
+    // Configuration options go here
+    options: {
+        maintainAspectRatio: false,
+        hover: {
+            // Overrides the global setting
+            mode: 'point'
+        }
+    }
+    });
+
+    setTimeout(function () {    
+    document.getElementById("loadingDiv").style.display = "none";
+    document.getElementById("lineChart").style.display = "block"
+    }, 750);
+}
+
+await_line_graph_data()
+
+</script>

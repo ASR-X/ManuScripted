@@ -1,0 +1,19 @@
+<h3 style="display:none" class="large-number" id="home-due-date">Placeholder</h3>
+
+<div id="loadingDiv-due-date-home" class="lds-ring">
+    <div></div>
+</div>
+
+<script>
+async function await_home_due_date_data() {
+while (window.data == null){
+    await sleep(200);
+}
+var momentdate = moment(data["items"][0]["due-date"], 'YYYY-MM-DDT00:00:00.000Z')
+    document.getElementById("home-due-date").innerHTML = momentdate.format('MMM Do, YYYY')
+    document.getElementById("loadingDiv-due-date-home").style.display = "none";
+    document.getElementById("home-due-date").style.display = "block"
+}
+
+await_home_due_date_data()
+</script>

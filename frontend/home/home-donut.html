@@ -1,0 +1,86 @@
+<canvas id="myDonut-home" style="display:none"></canvas>
+
+<div id="loadingDiv-donut-home" class="lds-ring">
+    <div></div>
+</div>
+
+<script>
+async function await_home_donut_data() {
+    while (window.data == null){
+        await sleep(200);
+    }
+    var tscore = 0.0
+    for (let i = 0; i < window.data["count"]; i++) {
+        tscore = parseFloat(tscore) + parseFloat(window.data["items"][i]["score"])
+        tscore = parseFloat(tscore).toFixed(1)
+        console.log()
+        console.log(tscore)
+    }
+    console.log(tscore)
+    tscore /= window.data["count"]
+    
+    
+    var data = {
+        labels: [
+            "Red",
+            "Blue",
+            "Yellow"
+        ],
+        datasets: [
+            {
+            data: [tscore, 100-tscore],
+            backgroundColor: [
+                "#3898EC","#f6f9f9"
+            ],
+            hoverBackgroundColor: [
+                "#3898EC","#f6f9f9"
+            ],
+            hoverBorderColor: [
+                "#fff","#fff"
+            ]
+            }]
+        };
+
+    var centertext = {
+        beforeDraw: function(chart) {
+        var width = chart.chart.width,
+            height = chart.chart.height,
+            ctx = chart.chart.ctx;
+
+        ctx.restore();
+        var fontSize = "30px";
+        ctx.font = fontSize + " Karla";
+        ctx.textBaseline = "middle";
+        ctx.fillStyle = '#3898EC'
+
+        var text = tscore,
+            textX = Math.round((width - ctx.measureText(text).width) / 2),
+            textY = height / 2;
+
+        ctx.fillText(text, textX, textY);
+        ctx.save();
+    }
+    }
+
+    var promisedDeliveryChart = new Chart(document.getElementById('myDonut-home'), {
+        plugins: [centertext],
+    type: 'doughnut',
+    data: data,
+    options: {
+        tooltips: false,
+        maintainAspectRatio: false,
+        legend: {
+        display: false
+        }
+    }
+    });
+
+    setTimeout(function () {    
+    document.getElementById("loadingDiv-donut-home").style.display = "none";
+    document.getElementById("myDonut-home").style.display = "block"
+    }, 750);
+}
+
+await_home_donut_data()
+
+</script>

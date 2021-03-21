@@ -1,0 +1,25 @@
+<h3 style="display:none" class="large-number" id="home-ovrall-avg-word-len">Placeholder</h3>
+
+<div id="loadingDiv-home-ovrall-avg-word-len" class="lds-ring">
+    <div></div>
+</div>
+
+<script>
+async function await_home_ovrall_avg_word_len_data() {
+    while (window.data == null){
+        await sleep(200);
+    }
+    var total = 0.0
+    for (let i = 0; i < window.data["count"]; i++) {
+        total += parseFloat(window.data["items"][i]["avgwordlength"])
+    }
+
+    total /= window.data["count"]
+    document.getElementById("home-ovrall-avg-word-len").innerHTML = parseFloat(total).toFixed(2)
+
+    document.getElementById("loadingDiv-home-ovrall-avg-word-len").style.display = "none";
+    document.getElementById("home-ovrall-avg-word-len").style.display = "block"
+}
+
+await_home_ovrall_avg_word_len_data()
+</script>
