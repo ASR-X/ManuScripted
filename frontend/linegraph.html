@@ -50,17 +50,6 @@
 <canvas id="lineChart" style="display:none"></canvas>
 
 	<script>
-    async function getData(url = '') {
-    // Default options are marked with *
-        const response = await fetch(url, {
-            method: 'GET', // *GET, POST, PUT, DELETE, etc.
-            headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-            },
-        });
-        return response.json(); // parses JSON response into native JavaScript objects
-    }
 
     var ctx = document.getElementById('lineChart').getContext('2d');
     var labels =[]
@@ -91,7 +80,7 @@
             label: 'Score Over Past Checkpoints',
             backgroundColor: 'rgb(24, 117, 240, 0.5)',
             borderColor: 'rgb(24, 117, 240, 0.5)',
-            data: score.reverse()
+            data: cdata.reverse()
         }]
     },
 
