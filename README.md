@@ -2,6 +2,8 @@
 
 # ManuScripted
 
+### **First Place | High Scool Headaches | [NC State University's PackHacks 2021](https://ncsupackhacks.org/)**
+## Description
 Built for high-schoolers, by high-schoolers. We know exactly how stressful being in high-school is, so we built ManuScripted. This web app helps you keep track of all the stages of writing an essay, from the rough draft to the final paper. Write your essays with confidence with visualizations and insights into your writing in an instant, and a little help from AI to help you reach that next level.
 ## Advanced Analytics and Statistics
 ManuScripted is soely based on giving you useful insights and conclusions into your writing, with multiple advanced metrics such as a Readability Index score. Graphs and charts to help map your growth as a writer keep you motivated and on-track, ready to knock out that next major assignment. Knowledge is power, and through ManuScript, we hope to empower every high-schooler and student in their writing.
@@ -13,7 +15,7 @@ We know that lingustics AI has become very advanced over the last few years, but
  - *Still testing* An easy-to-use interface for intelligent text-to-speech through Google AI, making sure you never miss those small mistakes
 
 ## Try it out!
-The prototype for ManuScripted is publicly available at https://manuscripted.webflow.io - give a test!  
+The prototype for ManuScripted is publicly available at https://manuscripted.webflow.io - give it a test!  
 Our DevPost project is available at https://devpost.com/software/manuscripted   
 This GitHub repository is a mix of the Webflow custom components in `./frontend/` and exported Colab Python Notebooks in `./backend/` 
 
