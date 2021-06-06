@@ -2,11 +2,11 @@
 
 # ManuScripted
 
-### **First Place | High Scool Headaches | [NC State University's PackHacks 2021](https://ncsupackhacks.org/)**
+### **First Place | High School Headaches | [NC State University's PackHacks 2021](https://ncsupackhacks.org/)**
 ## Description
 Built for high-schoolers, by high-schoolers. We know exactly how stressful being in high-school is, so we built ManuScripted. This web app helps you keep track of all the stages of writing an essay, from the rough draft to the final paper. Write your essays with confidence with visualizations and insights into your writing in an instant, and a little help from AI to help you reach that next level.
 ## Advanced Analytics and Statistics
-ManuScripted is soely based on giving you useful insights and conclusions into your writing, with multiple advanced metrics such as a Readability Index score. Graphs and charts to help map your growth as a writer keep you motivated and on-track, ready to knock out that next major assignment. Knowledge is power, and through ManuScript, we hope to empower every high-schooler and student in their writing.
+ManuScripted is solely based on giving you useful insights and conclusions into your writing, with multiple advanced metrics such as a Readability Index score. Graphs and charts to help map your growth as a writer keep you motivated and on-track, ready to knock out that next major assignment. Knowledge is power, and through ManuScript, we hope to empower every high-schooler and student in their writing.
 
 ## NLP to the next level
 We know that lingustics AI has become very advanced over the last few years, but we think that we've taken essay NLP to the next level. Among the multiple machine learning algorithms in ManuScripted are:
